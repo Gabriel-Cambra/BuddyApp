@@ -3,12 +3,18 @@
     {
       "id": "1",
       "name": "testUser",
-      "email": "user1@gmail.com"
+      "about": "",
+      "email": "user1@gmail.com",
+      "password": "a",
+      "friends": [{"name": "testUser2"},{"name": "spam"}]
     },
     {
       "id": "2",
       "name": "testUser2",
-      "email": "user2@gmail.com"
+      "about": "",
+      "email": "user2@gmail.com",
+      "password": "a",
+      "friends": [{"name": "testUser"}]
     }
   ]
 }

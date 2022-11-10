@@ -1,0 +1,15 @@
+{
+  "sessions": [
+    {
+      "id": "1",
+      "name": "Yoga",
+      "location": "WWU Rec Center",
+      "date": "01/21/2023",
+      "time": "12:00 pm",
+      "muscles": "Legs",
+      "description": "doing some yoga",
+      "creator": "testUser",
+      "participants": [{"name": "testUser2"}]
+    }
+  ]
+}
