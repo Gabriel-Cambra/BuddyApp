@@ -8,8 +8,8 @@
       "time": "12:00 pm",
       "muscles": "Legs",
       "description": "doing some yoga",
-      "creator": "testUser",
-      "participants": [{"name": "testUser2"}]
+      "creator": "2",
+      "participants": [{"id": "1"}]
     }
   ]
 }

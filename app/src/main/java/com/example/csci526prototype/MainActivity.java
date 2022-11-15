@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper = new DatabaseHelper();
     private ActivityMainBinding binding;
     private ArrayList<Sessions> sessions = new ArrayList<>();
     private ArrayList<UserModel> users = new ArrayList<>();
@@ -51,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArrayUsers.length(); i++){
                 JSONObject tempData = jsonArrayUsers.getJSONObject(i);
                 JSONArray tempFriends = tempData.getJSONArray("friends");
-                List<String> friends = new ArrayList<>();
+                List<Integer> friends = new ArrayList<>();
                 for (int j = 0; j < tempFriends.length(); j++){
-                    friends.add(tempFriends.getJSONObject(j).getString("name"));
+                    friends.add(tempFriends.getJSONObject(j).getInt("id"));
                     System.out.println(friends.get(j));
                 }
 
-                UserModel tempUser = new UserModel(tempData.getString("name"), tempData.getString("about"), tempData.getString("email"), tempData.getString("password"), friends);
+                UserModel tempUser = new UserModel(tempData.getInt("id"), tempData.getString("name"), tempData.getString("about"), tempData.getString("email"), tempData.getString("password"), friends);
                 users.add(tempUser);
             }
             JSONObject jsonSessions = new JSONObject(JsonData("Sessions.json"));
@@ -65,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArraySessions.length(); i++){
                 JSONObject tempData = jsonArraySessions.getJSONObject(i);
                 JSONArray tempParticipants = tempData.getJSONArray("participants");
-                List<String> participants = new ArrayList<>();
+                List<Integer> participants = new ArrayList<>();
                 for (int j = 0; j < tempParticipants.length(); j++){
-                    participants.add(tempParticipants.getJSONObject(j).getString("name"));
+                    participants.add(tempParticipants.getJSONObject(j).getInt("id"));
                     System.out.println(participants.get(j));
                 }
 
-                Sessions tempSession = new Sessions(tempData.getString("creator"), tempData.getString("muscles"), tempData.getString("name"), tempData.getString("description"), tempData.getString("date"), tempData.getString("time"),tempData.getString("location"), participants);
+                Sessions tempSession = new Sessions(tempData.getInt("id"), tempData.getInt("creator"), tempData.getString("muscles"), tempData.getString("name"), tempData.getString("description"), tempData.getString("date"), tempData.getString("time"),tempData.getString("location"), participants);
                 sessions.add(tempSession);
             }
 
@@ -95,5 +96,16 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+
+    public void removeSession(int id){
+        sessions = databaseHelper.removeSession(sessions, id);
+    }
+    public void addUser(String name, String email, String password){
+        users = databaseHelper.addUser(users, name, email, password);
+    }
+    public void addSession(String name, String location, String date, String time, String muscles, String description, int creator){
+        sessions = databaseHelper.addSession(sessions, name, location, date, time, muscles, description, creator);
+    }
+
 
 }

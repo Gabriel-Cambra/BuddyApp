@@ -6,7 +6,7 @@
       "about": "",
       "email": "user1@gmail.com",
       "password": "a",
-      "friends": [{"name": "testUser2"},{"name": "spam"}]
+      "friends": [{"name": "testUser2"},{"id": "2"}]
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "about": "",
       "email": "user2@gmail.com",
       "password": "a",
-      "friends": [{"name": "testUser"}]
+      "friends": [{"id": "1"}]
     }
   ]
 }

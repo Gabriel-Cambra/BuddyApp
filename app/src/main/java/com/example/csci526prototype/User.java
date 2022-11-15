@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private int id;
     private String name;
     private String about;
     private String email;
     private String password;
-    private List<String> friends;
-    public User(String name, String about, String email, String password, List<String> friends) {
+    private List<Integer> friends;
+    public User(int id, String name, String about, String email, String password, List<Integer> friends) {
+        this.id = id;
         this.name = name;
         this.about = about;
         this.email = email;
@@ -18,16 +20,20 @@ public class User {
     }
 
     public User(){
+        this.id = 0;
         this.name = "tempname";
         this.about = "temp about";
         this.email = "temp@gmail";
         this.password = "pass123";
         this.friends = new ArrayList<>();
-        friends.add("temp friend 1");
-        friends.add("temp friend 2");
+        friends.add(1);
+        friends.add(2);
     }
 
     //getters
+    public int getId(){
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -44,7 +50,7 @@ public class User {
         return password;
     }
 
-    public List<String> getFriends() {
+    public List<Integer> getFriends() {
         return friends;
     }
 
@@ -65,7 +71,7 @@ public class User {
         this.password = password;
     }
 
-    public void setFriends(List<String> friends) {
+    public void setFriends(List<Integer> friends) {
         this.friends = friends;
     }
 }

@@ -5,16 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Sessions {
-    private String creator;
+    private int id;
+    private int creator;
     private String muscles;
     private String name;
     private String desc;
     private String date;
     private String time;
     private String location;
-    private List<String> participants;
+    private List<Integer> participants;
 
-    public Sessions(String creator, String muscles, String name, String desc, String date, String time, String location, List<String> participants) {
+    public Sessions(int id, int creator, String muscles, String name, String desc, String date, String time, String location, List<Integer> participants) {
+        this.id = id;
         this.creator = creator;
         this.muscles = muscles;
         this.name = name;
@@ -41,7 +43,11 @@ public class Sessions {
     }
 
     // Getters
-    public String getCreator() {
+    public int getId() {
+        return id;
+    }
+
+    public int getCreator() {
         return creator;
     }
 
@@ -69,18 +75,19 @@ public class Sessions {
         return location;
     }
 
-    public List<String> getParticipants() {
+    public List<Integer> getParticipants() {
         return participants;
     }
 
     // Setters
-    public void setCreator(String creator) {
+    public void setCreator(int creator) {
         this.creator = creator;
     }
 
     public void setMuscles(String muscles) {
         this.muscles = muscles;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -101,7 +108,7 @@ public class Sessions {
         this.location = location;
     }
 
-    public void setParticipants(List<String> participants) {
+    public void setParticipants(List<Integer> participants) {
         this.participants = participants;
     }
 }

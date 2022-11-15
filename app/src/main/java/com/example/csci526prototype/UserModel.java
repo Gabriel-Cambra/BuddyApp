@@ -4,13 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UserModel {
+    private int id;
     private String name;
     private String about;
     private String email;
     private String password;
-    private List<String> friends;
+    private List<Integer> friends;
 
-    public UserModel(String name, String about, String email, String password, List<String> friends) {
+    public UserModel(int id, String name, String about, String email, String password, List<Integer> friends) {
+        this.id = id;
         this.name = name;
         this.about = about;
         this.email = email;
@@ -34,6 +36,10 @@ public class UserModel {
     }
 
     //getters
+    public int getId(){
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -50,7 +56,7 @@ public class UserModel {
         return password;
     }
 
-    public List<String> getFriends() {
+    public List<Integer> getFriends() {
         return friends;
     }
 
@@ -71,7 +77,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setFriends(List<String> friends) {
+    public void setFriends(List<Integer> friends) {
         this.friends = friends;
     }
 }
