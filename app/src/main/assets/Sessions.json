@@ -6,10 +6,10 @@
       "location": "WWU Rec Center",
       "date": "01/21/2023",
       "time": "12:00 pm",
-      "muscles": "Legs",
+      "muscles": ["false"],
       "description": "doing some yoga",
       "creator": "2",
-      "participants": [{"id": "1"}]
+      "participants": ["1"]
     }
   ]
 }

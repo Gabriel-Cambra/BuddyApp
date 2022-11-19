@@ -1,5 +1,12 @@
 package com.example.csci526prototype;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +32,9 @@ public class DatabaseHelper {
     public ArrayList<Sessions> addSession(ArrayList<Sessions> sessions, String name, String location, String date, String time, String muscles, String description, int creator){
         int id = sessions.get(sessions.size()-1).getId();
         ArrayList<Integer> participants = new ArrayList<>();
-        Sessions session = new Sessions(id, creator, muscles, name, description, date, time, location, participants);
-        sessions.add(session);
+//        Sessions session = new Sessions(id, creator, muscles, name, description, date, time, location, participants);
+//        sessions.add(session);
         return sessions;
     }
+
 }
