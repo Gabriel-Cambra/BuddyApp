@@ -1,13 +1,14 @@
 package com.example.csci526prototype;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Sessions {
+public class Sessions implements Serializable {
     private int id;
     private int creator;
-    private String muscles;
+    private boolean[] muscles;
     private String name;
     private String desc;
     private String date;
@@ -15,7 +16,7 @@ public class Sessions {
     private String location;
     private List<Integer> participants;
 
-    public Sessions(int id, int creator, String muscles, String name, String desc, String date, String time, String location, List<Integer> participants) {
+    public Sessions(int id, int creator, boolean[] muscles, String name, String desc, String date, String time, String location, List<Integer> participants) {
         this.id = id;
         this.creator = creator;
         this.muscles = muscles;
@@ -51,7 +52,7 @@ public class Sessions {
         return creator;
     }
 
-    public String getMuscles() {
+    public boolean[] getMuscles() {
         return muscles;
     }
 
@@ -84,7 +85,7 @@ public class Sessions {
         this.creator = creator;
     }
 
-    public void setMuscles(String muscles) {
+    public void setMuscles(boolean[] muscles) {
         this.muscles = muscles;
     }
 

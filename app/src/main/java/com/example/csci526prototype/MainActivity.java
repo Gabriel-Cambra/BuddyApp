@@ -1,6 +1,12 @@
 package com.example.csci526prototype;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,17 +22,34 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHelper databaseHelper = new DatabaseHelper();
+//    private DatabaseHelper databaseHelper = new DatabaseHelper();
     private ActivityMainBinding binding;
-    private ArrayList<Sessions> sessions = new ArrayList<>();
-    private ArrayList<UserModel> users = new ArrayList<>();
+    private EditText username, password;
+    private Button login, createAccount;
+    private TextView forgotPass;
+//    private ArrayList<Sessions> sessions = new ArrayList<>();
+//    private ArrayList<UserModel> users = new ArrayList<>();
+    private DBUserHandler userDB;
+    private DBSessionsHandler sessionsDB;
+    private DBFriendsHandler friendsDB;
+    private DBParticipantsHandler participantsDB;
+    private User mainUser;
+    private ArrayList<UserModel> users;
 
 
     @Override
@@ -36,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+<<<<<<< HEAD
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -43,45 +67,91 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
 
+=======
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.button3);
+        createAccount = findViewById(R.id.button5);
+        forgotPass = findViewById(R.id.forgetpass);
 
-        try {
-            JSONObject jsonUsers = new JSONObject(JsonData("Users.json"));
-            JSONArray jsonArrayUsers = jsonUsers.getJSONArray("users");
-            for (int i = 0; i < jsonArrayUsers.length(); i++){
-                JSONObject tempData = jsonArrayUsers.getJSONObject(i);
-                JSONArray tempFriends = tempData.getJSONArray("friends");
-                List<Integer> friends = new ArrayList<>();
-                for (int j = 0; j < tempFriends.length(); j++){
-                    friends.add(tempFriends.getJSONObject(j).getInt("id"));
-                    System.out.println(friends.get(j));
-                }
+        userDB = new DBUserHandler(MainActivity.this);
+        sessionsDB = new DBSessionsHandler(MainActivity.this);
+        friendsDB = new DBFriendsHandler(MainActivity.this);
+        participantsDB = new DBParticipantsHandler(MainActivity.this);
 
-                UserModel tempUser = new UserModel(tempData.getInt("id"), tempData.getString("name"), tempData.getString("about"), tempData.getString("email"), tempData.getString("password"), friends);
-                users.add(tempUser);
+        createAccount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                userDB.addNewUser("test", "test about", "test@test", "test");
             }
-            JSONObject jsonSessions = new JSONObject(JsonData("Sessions.json"));
-            JSONArray jsonArraySessions = jsonSessions.getJSONArray("sessions");
-            for (int i = 0; i < jsonArraySessions.length(); i++){
-                JSONObject tempData = jsonArraySessions.getJSONObject(i);
-                JSONArray tempParticipants = tempData.getJSONArray("participants");
-                List<Integer> participants = new ArrayList<>();
-                for (int j = 0; j < tempParticipants.length(); j++){
-                    participants.add(tempParticipants.getJSONObject(j).getInt("id"));
-                    System.out.println(participants.get(j));
+        });
+>>>>>>> 227587c0ffe36685d7271a976dac7f3c8d77acfe
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // below line is to get data from all edit text fields.
+                String usernameText = username.getText().toString();
+                String passwordText = password.getText().toString();
+
+                // validating if the text fields are empty or not.
+                if (usernameText.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please Enter a Username", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if(passwordText.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Please Enter a Password", Toast.LENGTH_SHORT).show();
+                    return;
 
-                Sessions tempSession = new Sessions(tempData.getInt("id"), tempData.getInt("creator"), tempData.getString("muscles"), tempData.getString("name"), tempData.getString("description"), tempData.getString("date"), tempData.getString("time"),tempData.getString("location"), participants);
-                sessions.add(tempSession);
+                }
+                User tempUser = userDB.login(usernameText, passwordText, friendsDB);
+
+                if (tempUser != null ){
+                    mainUser = tempUser;
+                    users = userDB.getUsers(tempUser.getName(), friendsDB);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                    intent.putExtra("userDB", userDB);
+//                    intent.putExtra("sessionsDB",sessionsDB);
+//                    intent.putExtra("friendsDB",friendsDB);
+//                    intent.putExtra("participantsDB",participantsDB);
+                    intent.putExtra("mainUser",mainUser);
+                    intent.putExtra("users",users);
+                    startActivity(intent);
+                    //TODO Login successfull
+                }else{
+                    Toast.makeText(MainActivity.this, "Wrong Username/Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
+        });
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO change screen
+
+            }
+        });
+
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
+//        // Passing each menu ID as a set of Ids because each
+//        // menu should be considered as top level destinations.
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+//                .build();
+//        NavController navController = Navigation.findNavController(this, R.id.signin);
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupWithNavController(binding.navView, navController);
+
+
     }
 
     private String JsonData(String file) {
         String json = null;
         try {
+
+
             InputStream inputStream = getAssets().open(file);
             int sizeOfFile = inputStream.available();
             byte[] bufferData = new byte[sizeOfFile];
@@ -95,6 +165,30 @@ public class MainActivity extends AppCompatActivity {
         return json;
     }
 
+/*
+        writeSessions();
+
+    private void writeSessions(){
+        String temp = databaseHelper.sessionsString(sessions);
+        try {
+            File file = new File(getFilesDir(), "Sessions.json");
+            Writer output = null;
+            System.out.println(file.getPath());
+
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(temp);
+            output.close();
+            System.out.println("we did it?");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("DIDNT FIND ITTTTTTTTTTTTTTTTTT");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void removeSession(int id){
         sessions = databaseHelper.removeSession(sessions, id);
     }
@@ -106,4 +200,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    */
 }

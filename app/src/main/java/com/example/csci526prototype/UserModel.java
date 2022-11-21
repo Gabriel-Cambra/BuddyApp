@@ -1,17 +1,19 @@
 package com.example.csci526prototype;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserModel {
+public class UserModel implements Serializable {
     private int id;
     private String name;
     private String about;
     private String email;
     private String password;
-    private List<Integer> friends;
+    private ArrayList<Integer> friends;
 
-    public UserModel(int id, String name, String about, String email, String password, List<Integer> friends) {
+    public UserModel(int id, String name, String about, String email, String password, ArrayList<Integer> friends) {
         this.id = id;
         this.name = name;
         this.about = about;
@@ -56,7 +58,7 @@ public class UserModel {
         return password;
     }
 
-    public List<Integer> getFriends() {
+    public ArrayList<Integer> getFriends() {
         return friends;
     }
 
@@ -77,7 +79,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setFriends(List<Integer> friends) {
+    public void setFriends(ArrayList<Integer> friends) {
         this.friends = friends;
     }
 }
