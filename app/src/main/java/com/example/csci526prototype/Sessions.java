@@ -1,10 +1,11 @@
 package com.example.csci526prototype;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Sessions {
+public class Sessions implements Serializable {
     private int id;
     private int creator;
     private boolean[] muscles;

@@ -6,9 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DBUserHandler extends SQLiteOpenHelper {
+public class DBUserHandler extends SQLiteOpenHelper implements Serializable {
 
     private static final String DB_NAME = "Users";
 
@@ -53,6 +54,39 @@ public class DBUserHandler extends SQLiteOpenHelper {
         return user;
     }
 
+    public ArrayList<UserModel> getUsers(String username, DBFriendsHandler temp){
+        SQLiteDatabase db = this.getWritableDatabase();
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + NAME_COL + " != \"" + username + "\"", null);
+        ArrayList<UserModel> userModelArrayList = new ArrayList<>();
+        if(cursorUsers.moveToFirst()){
+            do{
+                ArrayList<Integer> friends = temp.getFriends(cursorUsers.getInt(0));
+                userModelArrayList.add(new UserModel(
+                        cursorUsers.getInt(0),
+                        cursorUsers.getString(1),
+                        cursorUsers.getString(2),
+                        cursorUsers.getString(3),
+                        cursorUsers.getString(4),
+                        friends
+                ));
+            }while (cursorUsers.moveToNext());
+        }
+        cursorUsers.close();
+        return userModelArrayList;
+    }
+
+    public void readUsers(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
+        if(cursorUsers.moveToFirst()){
+            do{
+                System.out.println("DATABASE: " + cursorUsers.getString(1));
+            }while (cursorUsers.moveToNext());
+        }
+        cursorUsers.close();
+    }
 
     public void addNewUser(String userName, String about, String email, String password) {
 

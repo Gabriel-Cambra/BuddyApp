@@ -6,10 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBFriendsHandler extends SQLiteOpenHelper {
+public class DBFriendsHandler extends SQLiteOpenHelper implements Serializable {
 
     private static final String DB_NAME = "Friends";
 

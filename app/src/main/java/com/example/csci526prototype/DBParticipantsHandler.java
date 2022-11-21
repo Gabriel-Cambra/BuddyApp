@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBParticipantsHandler extends SQLiteOpenHelper {
+import java.io.Serializable;
+
+public class DBParticipantsHandler extends SQLiteOpenHelper implements Serializable {
 
     private static final String DB_NAME = "Participants";
 

@@ -1,5 +1,6 @@
 package com.example.csci526prototype;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //    private DatabaseHelper databaseHelper = new DatabaseHelper();
     private ActivityMainBinding binding;
     private EditText username, password;
-    private Button login;
+    private Button login, createAccount;
     private TextView forgotPass;
 //    private ArrayList<Sessions> sessions = new ArrayList<>();
 //    private ArrayList<UserModel> users = new ArrayList<>();
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private DBFriendsHandler friendsDB;
     private DBParticipantsHandler participantsDB;
     private User mainUser;
+    private ArrayList<UserModel> users;
 
 
     @Override
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.button3);
+        createAccount = findViewById(R.id.button5);
         forgotPass = findViewById(R.id.forgetpass);
 
         userDB = new DBUserHandler(MainActivity.this);
@@ -67,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         friendsDB = new DBFriendsHandler(MainActivity.this);
         participantsDB = new DBParticipantsHandler(MainActivity.this);
 
+        createAccount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                userDB.addNewUser("test", "test about", "test@test", "test");
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +98,16 @@ public class MainActivity extends AppCompatActivity {
                 User tempUser = userDB.login(usernameText, passwordText, friendsDB);
 
                 if (tempUser != null ){
+                    mainUser = tempUser;
+                    users = userDB.getUsers(tempUser.getName(), friendsDB);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                    intent.putExtra("userDB", userDB);
+//                    intent.putExtra("sessionsDB",sessionsDB);
+//                    intent.putExtra("friendsDB",friendsDB);
+//                    intent.putExtra("participantsDB",participantsDB);
+                    intent.putExtra("mainUser",mainUser);
+                    intent.putExtra("users",users);
+                    startActivity(intent);
                     //TODO Login successfull
                 }else{
                     Toast.makeText(MainActivity.this, "Wrong Username/Password", Toast.LENGTH_SHORT).show();

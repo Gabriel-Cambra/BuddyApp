@@ -1,9 +1,10 @@
 package com.example.csci526prototype;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends UserModel{
+public class User extends UserModel implements Serializable {
     private int id;
     private String name;
     private String about;
