@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-<<<<<<< HEAD
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
 
-=======
+
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.button3);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 userDB.addNewUser("test", "test about", "test@test", "test");
             }
         });
->>>>>>> 227587c0ffe36685d7271a976dac7f3c8d77acfe
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
