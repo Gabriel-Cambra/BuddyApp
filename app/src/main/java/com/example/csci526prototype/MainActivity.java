@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 //    private DatabaseHelper databaseHelper = new DatabaseHelper();
     private ActivityMainBinding binding;
     private EditText username, password;
-    private Button login, createAccount;
-    private TextView forgotPass;
+    private Button login;
+    private TextView forgotPass, createAccount;
 //    private ArrayList<Sessions> sessions = new ArrayList<>();
 //    private ArrayList<UserModel> users = new ArrayList<>();
     private DBUserHandler userDB;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.button3);
-        createAccount = findViewById(R.id.button5);
+        createAccount = findViewById(R.id.newuser);
         forgotPass = findViewById(R.id.forgetpass);
 
         userDB = new DBUserHandler(MainActivity.this);
@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                userDB.addNewUser("test", "test about", "test@test", "test");
+                Intent intent = new Intent(MainActivity.this, create_acct.class);
+                startActivity(intent);
             }
         });
 
@@ -130,7 +131,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO change screen
-
+                Intent intent = new Intent(MainActivity.this, forget_pass.class);
+                startActivity(intent);
             }
         });
 

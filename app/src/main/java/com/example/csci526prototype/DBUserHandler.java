@@ -43,6 +43,7 @@ public class DBUserHandler extends SQLiteOpenHelper implements Serializable {
         Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + NAME_COL + " = \"" + userName + "\" AND " + PASSWORD_COL +" = \"" + password +"\"", null);
 
         if (cursorUsers.getCount() <= 0){
+            cursorUsers.close();
             return null;
         }
 
@@ -50,6 +51,7 @@ public class DBUserHandler extends SQLiteOpenHelper implements Serializable {
 
         ArrayList<Integer> friends = temp.getFriends(cursorUsers.getInt(0));
         User user = new User(cursorUsers.getInt(0),cursorUsers.getString(1),cursorUsers.getString(2),cursorUsers.getString(3),cursorUsers.getString(4), friends);
+        cursorUsers.close();
 
         return user;
     }
@@ -88,6 +90,18 @@ public class DBUserHandler extends SQLiteOpenHelper implements Serializable {
         cursorUsers.close();
     }
 
+    public boolean checkUser(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursorUsers = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE " + NAME_COL + " = \"" + username + "\"", null);
+        if (cursorUsers.getCount() > 0){
+            cursorUsers.close();
+            return false;
+        }
+
+        cursorUsers.close();
+        return true;
+
+    }
     public void addNewUser(String userName, String about, String email, String password) {
 
         SQLiteDatabase db = this.getWritableDatabase();
