@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
 //    private ArrayList<Sessions> sessions = new ArrayList<>();
 //    private ArrayList<UserModel> users = new ArrayList<>();
     private DBUserHandler userDB;
-    private DBSessionsHandler sessionsDB;
-    private DBFriendsHandler friendsDB;
-    private DBParticipantsHandler participantsDB;
     private User mainUser;
     private ArrayList<UserModel> users;
 
@@ -75,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
         forgotPass = findViewById(R.id.forgetpass);
 
         userDB = new DBUserHandler(MainActivity.this);
-        sessionsDB = new DBSessionsHandler(MainActivity.this);
-        friendsDB = new DBFriendsHandler(MainActivity.this);
-        participantsDB = new DBParticipantsHandler(MainActivity.this);
 
         createAccount.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -106,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
                     return;
 
                 }
-                User tempUser = userDB.login(usernameText, passwordText, friendsDB);
+                User tempUser = userDB.login(usernameText, passwordText);
 
                 if (tempUser != null ){
                     mainUser = tempUser;
-                    users = userDB.getUsers(tempUser.getName(), friendsDB);
+                    users = userDB.getUsers(tempUser.getName());
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
 //                    intent.putExtra("userDB", userDB);
 //                    intent.putExtra("sessionsDB",sessionsDB);
@@ -130,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO change screen
                 Intent intent = new Intent(MainActivity.this, forget_pass.class);
                 startActivity(intent);
             }

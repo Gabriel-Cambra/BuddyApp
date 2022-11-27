@@ -23,8 +23,8 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="30dp"
-            android:layout_height="26dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/ic_baseline_arrow_back_ios_new_24"
             android:padding="100dp" />
 

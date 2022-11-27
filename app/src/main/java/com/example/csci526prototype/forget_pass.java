@@ -33,6 +33,10 @@ public class forget_pass extends AppCompatActivity {
         forgot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(email.getText().toString().isEmpty()){
+                    Toast.makeText(forget_pass.this, "Enter a Email", Toast.LENGTH_SHORT).show();
+
+                }
                 Toast.makeText(forget_pass.this, "Reset Email Sent", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(forget_pass.this, MainActivity.class);
                 startActivity(intent);

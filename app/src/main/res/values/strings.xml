@@ -4,6 +4,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string-array name="Loaction">
+        <item>WWU Rec Center</item>
+        <item>Other Gym</item>
+    </string-array>
     <string-array name="Time">
         <item>Time</item>
         <item>6:00 am</item>

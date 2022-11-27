@@ -31,6 +31,102 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.029999971" />
 
+    <Spinner
+        android:id="@+id/locationSpinner"
+        android:layout_width="346dp"
+        android:layout_height="58dp"
+        android:layout_margin="10dp"
+        android:hint="Session Location"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fndSession" />
+
+    <TextView
+        android:layout_width="346dp"
+        android:layout_height="58dp"
+        android:layout_margin="10dp"
+        android:background="#30432F2F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fndSession" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:padding="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/selectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Select Date:"
+        android:textColor="#3E3535"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationSpinner" />
+    <TextView
+        android:id="@+id/selectTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="Select Time:"
+        android:textColor="#3E3535"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/timePickerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerButton"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <Button
+        android:id="@+id/timePickerButton"
+        style="?android:spinnerStyle"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="31dp"
+        android:background="#30432F2F"
+        android:gravity="center_horizontal"
+        android:text="9:30"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerButton" />
+
+    <Button
+        android:id="@+id/datePickerButton"
+        style="?android:spinnerStyle"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="5dp"
+        android:background="#30432F2F"
+        android:gravity="center_horizontal"
+        android:text="01 01 2020"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectDate" />
+
     <TextView
         android:id="@+id/fndSession"
         android:layout_width="match_parent"
@@ -47,49 +143,7 @@
         app:layout_constraintVertical_bias="0.089999974" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="#30432F2F"
-        android:hint="MM/DD/YEAR"
-        android:textColorHint="@color/white"
-        app:counterEnabled="true"
-        app:counterMaxLength="8"
-        app:endIconMode="clear_text"
-        app:helperText="Required"
-        app:helperTextTextColor="#EF0000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fndSession"
-        app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:maxLength="9" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--  Create code for spinner  -->
-    <!--   I created an array of all the times in strings.xml -->
-    <Spinner
-        android:id="@+id/timeSlot"
-        android:layout_width="138dp"
-        android:layout_height="60dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
 
     <Button
         android:id="@+id/FindSessionBtn"
@@ -108,16 +162,74 @@
         android:id="@+id/button4"
         android:layout_width="138dp"
         android:layout_height="57dp"
+        android:layout_marginTop="10dp"
         android:background="#900A9CFD"
         android:text="Muscle"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48000002" />
+        app:layout_constraintTop_toBottomOf="@+id/timePickerButton" />
+    <ImageView
+        android:id="@+id/basicImage"
+
+        android:layout_width="162dp"
+        android:layout_height="119dp"
+        android:src="@drawable/base_muscle_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <ImageView
+        android:id="@+id/armImage"
+
+        android:layout_width="48dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="52dp"
+        android:src="@drawable/arms"
+        app:layout_constraintEnd_toEndOf="@+id/basicImage"
+        app:layout_constraintStart_toStartOf="@+id/basicImage"
+        app:layout_constraintTop_toTopOf="@+id/basicImage" />
+
+    <ImageView
+        android:id="@+id/chestImage"
+
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="95dp"
+        android:src="@drawable/chest"
+        app:layout_constraintEnd_toEndOf="@+id/basicImage"
+        app:layout_constraintStart_toStartOf="@+id/basicImage"
+        app:layout_constraintTop_toTopOf="@+id/basicImage" />
+
+    <ImageView
+        android:id="@+id/legImage"
+        android:layout_width="24dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="92dp"
+        android:src="@drawable/legs"
+        app:layout_constraintEnd_toEndOf="@+id/basicImage"
+        app:layout_constraintStart_toStartOf="@+id/basicImage"
+        app:layout_constraintTop_toTopOf="@+id/basicImage" />
+
+    <ImageView
+        android:id="@+id/backImage"
+
+        android:layout_width="26dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/back"
+        app:layout_constraintEnd_toEndOf="@+id/basicImage"
+        app:layout_constraintStart_toStartOf="@+id/basicImage"
+        app:layout_constraintTop_toTopOf="@+id/basicImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

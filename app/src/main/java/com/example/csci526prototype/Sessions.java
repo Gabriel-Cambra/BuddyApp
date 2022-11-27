@@ -1,22 +1,24 @@
 package com.example.csci526prototype;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Sessions implements Serializable {
     private int id;
     private int creator;
-    private boolean[] muscles;
+    private int muscles;
     private String name;
     private String desc;
     private String date;
     private String time;
     private String location;
-    private List<Integer> participants;
+    private ArrayList<Integer> participants;
 
-    public Sessions(int id, int creator, boolean[] muscles, String name, String desc, String date, String time, String location, List<Integer> participants) {
+    public Sessions(int id, int creator, int muscles, String name, String desc, String date, String time, String location, ArrayList<Integer> participants) {
         this.id = id;
         this.creator = creator;
         this.muscles = muscles;
@@ -37,7 +39,6 @@ public class Sessions implements Serializable {
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
                 ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
                 ", location='" + location + '\'' +
                 ", participants=" + participants +
                 '}';
@@ -52,7 +53,7 @@ public class Sessions implements Serializable {
         return creator;
     }
 
-    public boolean[] getMuscles() {
+    public int getMuscles() {
         return muscles;
     }
 
@@ -76,7 +77,7 @@ public class Sessions implements Serializable {
         return location;
     }
 
-    public List<Integer> getParticipants() {
+    public ArrayList<Integer> getParticipants() {
         return participants;
     }
 
@@ -85,7 +86,7 @@ public class Sessions implements Serializable {
         this.creator = creator;
     }
 
-    public void setMuscles(boolean[] muscles) {
+    public void setMuscles(int muscles) {
         this.muscles = muscles;
     }
 
@@ -109,7 +110,7 @@ public class Sessions implements Serializable {
         this.location = location;
     }
 
-    public void setParticipants(List<Integer> participants) {
+    public void setParticipants(ArrayList<Integer> participants) {
         this.participants = participants;
     }
 }

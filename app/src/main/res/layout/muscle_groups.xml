@@ -11,16 +11,170 @@
         android:id="@+id/muscleGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="Select Muscle Group"
         android:textColor="#3E3535"
         android:textSize="35dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089999974" />
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:padding="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--    <RadioGroup-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:background="@drawable/base_muscle_select"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/button5"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:orientation="horizontal"-->
+
+<!--        app:layout_constraintTop_toBottomOf="@+id/muscleGroup">-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/s"-->
+<!--            android:layout_width="46dp"-->
+<!--            android:layout_height="237dp"-->
+<!--            android:onClick="onRadioButtonClicked"-->
+<!--            android:text="test" />-->
+
+<!--        <RadioGroup-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+
+
+<!--        />-->
+
+<!--    </RadioGroup>-->
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeMuscle"
+        android:background="@drawable/base_muscle_select"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/muscleGroup">
+
+        <TextView
+            android:id="@+id/arm1"
+
+            android:layout_width="59dp"
+            android:layout_height="160dp"
+
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/arm2"
+            android:layout_width="46dp"
+            android:clickable="true"
+            android:layout_height="84dp"
+            android:layout_below="@+id/arm1" />
+        <TextView
+            android:id="@+id/arm3"
+            android:layout_toRightOf="@+id/chest1"
+            android:layout_width="59dp"
+            android:layout_height="160dp"
+            android:clickable="true"
+            />
+
+        <TextView
+            android:id="@+id/arm4"
+            android:layout_width="46dp"
+            android:layout_toRightOf="@+id/leg1"
+            android:clickable="true"
+            android:layout_height="84dp"
+            android:layout_below="@+id/arm1" />
+
+        <ImageView
+            android:id="@+id/armImage"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/arm1"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="-35dp"
+            android:layout_toLeftOf="@id/back1"
+            android:src="@drawable/arms" />
+
+        <ImageView
+            android:id="@+id/chestImage"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/arm1"
+            android:layout_marginRight="57dp"
+            android:layout_marginBottom="-2dp"
+            android:layout_toLeftOf="@id/back1"
+            android:src="@drawable/chest" />
+
+        <ImageView
+            android:id="@+id/legImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/arm1"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="-224dp"
+            android:layout_toLeftOf="@id/back1"
+            android:src="@drawable/legs" />
+
+        <ImageView
+            android:id="@+id/backImage"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/arm1"
+            android:layout_marginRight="-126dp"
+            android:layout_marginBottom="-27dp"
+            android:layout_toLeftOf="@id/back1"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/back1"
+            android:layout_width="106dp"
+            android:layout_height="157dp"
+            android:clickable="true"
+            android:layout_below="@+id/arm1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="-93dp"
+            android:layout_toRightOf="@+id/arm4" />
+
+        <TextView
+            android:id="@+id/chest1"
+            android:layout_width="67dp"
+            android:clickable="true"
+            android:layout_height="178dp"
+            android:layout_toRightOf="@+id/arm1" />
+
+        <TextView
+            android:id="@+id/leg1"
+            android:layout_width="91dp"
+            android:clickable="true"
+            android:layout_height="214dp"
+            android:layout_below="@+id/chest1"
+            android:layout_marginLeft="-12dp"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/arm1" />
+
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/button5"

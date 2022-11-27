@@ -122,6 +122,9 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true" />
+        <activity
+            android:name=".searchResults"
+            android:exported="true" />
     </application>
 
 </manifest>
