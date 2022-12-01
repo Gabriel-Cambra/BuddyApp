@@ -125,6 +125,12 @@
         <activity
             android:name=".searchResults"
             android:exported="true" />
+        <activity
+            android:name=".notifications"
+            android:exported="true" />
+        <activity
+            android:name=".messages"
+            android:exported="true" />
     </application>
 
 </manifest>

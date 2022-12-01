@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
 public class Beginner_workouts extends AppCompatActivity {
     private User mainUser;
+    private ImageButton homeScreen, searchScreen, profileScreen, messageScreen;
     private ArrayList<UserModel> users;
     private Button chest, arm, back, leg, ret;
 
@@ -82,6 +84,46 @@ public class Beginner_workouts extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        homeScreen = findViewById(R.id.homeButton);
+        searchScreen = findViewById(R.id.searchButton);
+        profileScreen = findViewById(R.id.profileButton);
+        messageScreen = findViewById(R.id.messageButton);
 
+        homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Beginner_workouts.this, HomeActivity.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        searchScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Beginner_workouts.this, findSession.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        profileScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Beginner_workouts.this, notifications.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        messageScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Beginner_workouts.this, messages.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
     }
 }

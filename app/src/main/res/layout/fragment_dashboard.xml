@@ -41,16 +41,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04000002" />
 
-    <TextView
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="148dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="40dp"
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="18dp"
+        android:background="@android:color/transparent"
         android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idRVSessions" />
+        android:src="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeButton" />
+
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/friends"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/messageButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profileButton" />
 
     <TextView
         android:id="@+id/availableSessions"
@@ -67,15 +100,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.100000024" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVSessions"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="200dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/availableSessions" />
+        android:layout_height="472dp"
+        app:layout_constraintBottom_toTopOf="@+id/messageButton"
+        app:layout_constraintTop_toBottomOf="@+id/availableSessions"
+        tools:layout_editor_absoluteX="-11dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRVSessions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </RelativeLayout>
 
 
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.example.csci526prototype.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+    private ImageButton homeScreen, searchScreen, profileScreen, messageScreen;
     private DBUserHandler userDB;
     private User mainUser;
     private ArrayList<UserModel> users;
@@ -75,6 +77,38 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, Beginner_workouts.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        homeScreen = findViewById(R.id.homeButton);
+        searchScreen = findViewById(R.id.searchButton);
+        profileScreen = findViewById(R.id.profileButton);
+        messageScreen = findViewById(R.id.messageButton);
+
+        searchScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, findSession.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        profileScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, notifications.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        messageScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, messages.class);
                 intent.putExtra("mainUser",mainUser);
                 intent.putExtra("users",users);
                 startActivity(intent);

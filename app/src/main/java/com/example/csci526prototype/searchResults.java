@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class searchResults extends AppCompatActivity {
     private User mainUser;
+    private ImageButton homeScreen, searchScreen, profileScreen, messageScreen;
     private ArrayList<UserModel> users;
     private Button back;
     private TextView username;
@@ -72,6 +74,47 @@ public class searchResults extends AppCompatActivity {
             }
         });
 
+        homeScreen = findViewById(R.id.homeButton);
+        searchScreen = findViewById(R.id.searchButton);
+        profileScreen = findViewById(R.id.profileButton);
+        messageScreen = findViewById(R.id.messageButton);
+
+        homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(searchResults.this, HomeActivity.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        searchScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(searchResults.this, findSession.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        profileScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(searchResults.this, notifications.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        messageScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(searchResults.this, messages.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
 
     }
 }

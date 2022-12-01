@@ -9,9 +9,52 @@
 
     <!-- Implement Profile Pic -->
 
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeButton" />
+
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/friends"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/messageButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="18dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:src="@drawable/message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profileButton" />
 
     <ImageView
+        android:clickable="true"
         android:id="@+id/imageView4"
         android:layout_width="335dp"
         android:layout_height="47dp"
@@ -66,6 +109,7 @@
         app:layout_constraintVertical_bias="0.120000005" />
 
     <ImageView
+        android:clickable="true"
         android:id="@+id/imageView5"
         android:layout_width="335dp"
         android:layout_height="47dp"
@@ -89,6 +133,7 @@
         app:layout_constraintVertical_bias="0.58000004" />
 
     <ImageView
+        android:clickable="true"
         android:id="@+id/imageView6"
         android:layout_width="335dp"
         android:layout_height="47dp"

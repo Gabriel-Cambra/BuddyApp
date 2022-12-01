@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.util.Locale;
 
 public class findSession extends AppCompatActivity {
     private User mainUser;
+    private ImageButton homeScreen, searchScreen, profileScreen, messageScreen;
     private ArrayList<UserModel> users;
     private Button backButton, muscleButton, search, date, time;
     private ImageView arm, chest, leg, back;
@@ -161,6 +163,40 @@ public class findSession extends AppCompatActivity {
                 openTimePicker(v);
             }
         });
+
+        homeScreen = findViewById(R.id.homeButton);
+        searchScreen = findViewById(R.id.searchButton);
+        profileScreen = findViewById(R.id.profileButton);
+        messageScreen = findViewById(R.id.messageButton);
+
+        homeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(findSession.this, HomeActivity.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        profileScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(findSession.this, notifications.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+        messageScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(findSession.this, messages.class);
+                intent.putExtra("mainUser",mainUser);
+                intent.putExtra("users",users);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
