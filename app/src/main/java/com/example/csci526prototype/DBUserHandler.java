@@ -101,7 +101,7 @@ public class DBUserHandler extends SQLiteOpenHelper  {
         cursorUsers.moveToFirst();
 
         ArrayList<Integer> friends = getFriends(cursorUsers.getInt(0));
-        User user = new User(cursorUsers.getInt(0),cursorUsers.getString(1),cursorUsers.getString(2),cursorUsers.getString(3),cursorUsers.getString(4), friends);
+        User user = new User(cursorUsers.getInt(0),cursorUsers.getString(1),cursorUsers.getString(2),cursorUsers.getString(3), friends);
         cursorUsers.close();
 
         return user;
@@ -120,7 +120,6 @@ public class DBUserHandler extends SQLiteOpenHelper  {
                         cursorUsers.getString(1),
                         cursorUsers.getString(2),
                         cursorUsers.getString(3),
-                        cursorUsers.getString(4),
                         friends
                 ));
             }while (cursorUsers.moveToNext());

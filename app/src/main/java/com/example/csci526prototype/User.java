@@ -9,14 +9,12 @@ public class User extends UserModel implements Serializable {
     private String name;
     private String about;
     private String email;
-    private String password;
     private ArrayList<Integer> friends;
-    public User(int id, String name, String about, String email, String password, ArrayList<Integer> friends) {
+    public User(int id, String name, String about, String email, ArrayList<Integer> friends) {
         this.id = id;
         this.name = name;
         this.about = about;
         this.email = email;
-        this.password = password;
         this.friends = friends;
     }
 
@@ -25,7 +23,6 @@ public class User extends UserModel implements Serializable {
         this.name = "tempname";
         this.about = "temp about";
         this.email = "temp@gmail";
-        this.password = "pass123";
         this.friends = new ArrayList<>();
         friends.add(1);
         friends.add(2);
@@ -47,9 +44,6 @@ public class User extends UserModel implements Serializable {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public ArrayList<Integer> getFriends() {
         return friends;
@@ -66,10 +60,6 @@ public class User extends UserModel implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setFriends(ArrayList<Integer> friends) {

@@ -24,7 +24,7 @@ public class DatabaseHelper {
     public ArrayList<UserModel> addUser(ArrayList<UserModel> users, String name, String email, String password){
         int id = users.get(users.size()-1).getId();
         ArrayList<Integer> friend = new ArrayList<>();
-        UserModel user = new UserModel(id, name, "", email, password, friend);
+        UserModel user = new UserModel(id, name, "", email, friend);
         users.add(user);
         return users;
     }
