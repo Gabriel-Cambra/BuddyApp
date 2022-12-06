@@ -146,6 +146,7 @@
       android:ems="10"
       android:inputType="none"
       android:enabled="false"
+      android:textColor="@color/white"
       android:text="Temp Username"
       android:gravity="center_horizontal"
       app:layout_constraintEnd_toEndOf="parent"
