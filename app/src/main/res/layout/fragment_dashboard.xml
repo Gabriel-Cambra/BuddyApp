@@ -33,7 +33,7 @@
         android:layout_width="148dp"
         android:layout_height="44dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none"
         android:text="Temp Username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
